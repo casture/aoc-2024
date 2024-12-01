@@ -1,4 +1,4 @@
-package main
+package part_1
 
 import (
 	"bufio"
@@ -13,7 +13,7 @@ var (
 	inputFile = "input.txt"
 )
 
-func main() {
+func init() {
 	f, err := os.Open(inputFile)
 	if err != nil {
 
