@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/casture/aoc/001/part-1"
-	"github.com/casture/aoc/001/part-2"
+	"github.com/casture/aoc/01/part-1"
+	"github.com/casture/aoc/01/part-2"
 )
 
 const (
