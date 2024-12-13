@@ -51,6 +51,8 @@ func (e *Equation) isValid() bool {
 				agg += e.operands[j+1]
 			case MULT:
 				agg *= e.operands[j+1]
+			case CONCAT:
+				agg, _ = strconv.Atoi(strconv.Itoa(agg) + strconv.Itoa(e.operands[j+1]))
 			}
 		}
 		if agg == e.solution {
@@ -65,18 +67,19 @@ type Operator int
 const (
 	ADD = iota
 	MULT
-	SUB
-	DIV
+	CONCAT
 )
 
 func getCombinations(max int) [][]Operator {
 	var c [][]Operator
 	c = append(c, []Operator{ADD})
 	c = append(c, []Operator{MULT})
+	c = append(c, []Operator{CONCAT})
 	for i := 0; i < max-1; i++ {
 		length := len(c)
 		for j := 0; j < length; j++ {
 			c = append(c, append(deepClone(c[j]), MULT))
+			c = append(c, append(deepClone(c[j]), CONCAT))
 			c[j] = append(c[j], ADD)
 		}
 	}
